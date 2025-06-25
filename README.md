@@ -4,18 +4,25 @@ This project consists of a FastAPI backend server and a React + TypeScript front
 
 ## Stack
 
-- React+Typescript frontend with `yarn` as package manager.
+- React + TypeScript frontend with Yarn 4 and Plug'n'Play (`nodeLinker: pnpm`).
 - Python FastAPI server with `uv` as package manager.
 
 ## Quickstart
 
-1. Install dependencies:
+1. Enable Yarn 4:
+
+```bash
+corepack enable
+yarn set version 4.0.2
+```
+
+2. Install dependencies:
 
 ```bash
 make
 ```
 
-2. Start the backend and frontend servers in separate terminals:
+3. Start the backend and frontend servers in separate terminals:
 
 ```bash
 make run-backend
