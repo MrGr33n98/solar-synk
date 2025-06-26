@@ -73,3 +73,7 @@ yarn build
 The generated files will be available in `frontend/dist`. Serve this directory
 with any static HTTP server (for example Nginx) while running the FastAPI
 backend.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
