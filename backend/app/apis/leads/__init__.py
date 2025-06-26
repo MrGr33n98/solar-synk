@@ -2,6 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 import asyncpg
+import os
+from email.message import EmailMessage
+import aiosmtplib
 from app.libs.database import get_db_connection
 from app.libs.models import Lead
 from app.auth import AuthorizedUser
@@ -43,6 +46,42 @@ class LeadWithSupplierInfo(BaseModel):
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
+
+async def send_lead_notification_email(to_email: str, supplier_name: str, contact_email: str, project_description: str) -> None:
+    """Send an email notification to the supplier about the new lead."""
+    smtp_host = os.getenv("SMTP_HOST")
+    smtp_port = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user = os.getenv("SMTP_USERNAME")
+    smtp_password = os.getenv("SMTP_PASSWORD")
+    from_email = os.getenv("EMAIL_FROM", smtp_user or "noreply@example.com")
+
+    if not smtp_host or not to_email:
+        # Missing configuration; log and exit silently
+        print("SMTP configuration missing; skipping email notification")
+        return
+
+    message = EmailMessage()
+    message["From"] = from_email
+    message["To"] = to_email
+    message["Subject"] = "New lead received"
+    message.set_content(
+        f"Hello {supplier_name},\n\n"
+        f"You have received a new lead from {contact_email}.\n\n"
+        f"Project description:\n{project_description}\n"
+    )
+
+    try:
+        await aiosmtplib.send(
+            message,
+            hostname=smtp_host,
+            port=smtp_port,
+            username=smtp_user,
+            password=smtp_password,
+            start_tls=True,
+        )
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
 @router.post("/", response_model=Lead)
 async def create_lead(
     body: CreateLeadRequest,
@@ -60,8 +99,11 @@ async def create_lead(
     if user_role != 'installer':
         raise HTTPException(status_code=403, detail="Only installers can create leads")
     
-    # Verify supplier exists
-    supplier = await db.fetchrow("SELECT id, name FROM companies WHERE id = $1", body.supplier_id)
+    # Verify supplier exists and get contact email
+    supplier = await db.fetchrow(
+        "SELECT id, name, email FROM companies WHERE id = $1",
+        body.supplier_id,
+    )
     if not supplier:
         raise HTTPException(status_code=404, detail="Supplier not found")
     
@@ -83,8 +125,14 @@ async def create_lead(
             body.preferred_contact_method, body.timeline
         )
         
-        # TODO: Send email notification to supplier
-        # await send_lead_notification_email(supplier['name'], body.contact_email, body.project_description)
+        # Send email notification in the background if SMTP is configured
+        if supplier.get("email"):
+            await send_lead_notification_email(
+                supplier["email"],
+                supplier["name"],
+                body.contact_email,
+                body.project_description,
+            )
         
         return Lead(**dict(lead_record))
     except asyncpg.exceptions.PostgresError as e:
