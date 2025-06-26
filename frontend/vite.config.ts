@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Prioritize shadcn aliases
+      // Prioritize shadcn aliases for component resolution
       '@/lib/': path.resolve(__dirname, './src/lib/'),
       '@/hooks/': path.resolve(__dirname, './src/extensions/shadcn/hooks/'),
       '@/components/hooks/': path.resolve(__dirname, './src/extensions/shadcn/hooks/'),
