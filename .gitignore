@@ -60,4 +60,5 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
-"@ | Out-File -FilePath ".gitignore" -Encoding UTF8
+"@ | Out-File -FilePath ".gitignore" -Encoding UTF8# Criar yarn.lock vazio no frontend
+New-Item -Path "yarn.lock" -ItemType File
