@@ -15,8 +15,25 @@ Usage examples:
   import { API_URL } from "app";
 */
 
+import { ReactNode } from 'react';
+import { useUserGuardContext } from './auth';
+
+interface UserGuardProps {
+  children: ReactNode;
+}
+
+export const UserGuard = ({ children }: UserGuardProps) => {
+  const { isAuthenticated } = useUserGuardContext();
+  
+  if (!isAuthenticated) {
+    return null; // Ou redirecionar para página de login
+  }
+  
+  return children;
+};
+
 export {
-  API_URL,
+  API_URL, 
   APP_BASE_PATH,
   APP_ID,
   Mode,
@@ -24,7 +41,7 @@ export {
   mode,
 } from "../constants";
 export * from "./auth";
-export { useStackApp } from "@stackframe/react";
+export const useStackApp = () => ({}); // Placeholder for @stackframe/react
 
 import brain from "../brain";
 export const backend = brain;

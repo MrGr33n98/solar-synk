@@ -4,7 +4,7 @@ import { OuterErrorBoundary } from "./prod-components/OuterErrorBoundary";
 import { router } from "./router";
 import { ThemeProvider } from "./internal-components/ThemeProvider";
 import { DEFAULT_THEME } from "./constants/default-theme";
-import { StackHandler, StackProvider } from "@stackframe/react";
+import { StackProvider } from "./lib/stack-frame";
 import { stackClientApp } from "app/auth";
 
 export const AppWrapper = () => {

@@ -37,8 +37,11 @@
       "app": [
         "./src/app"
       ],
+      "app/*": [
+        "./src/app/*"
+      ],
       "app/auth": [
-        "./src/app/auth"
+        "./src/app/auth.ts"
       ],
       "utils/*": [
         "./src/utils/*"
@@ -55,7 +58,14 @@
       "@/components/ui/*": [
         "./src/extensions/shadcn/components/*"
       ],
-    }
+      "brain/*": [
+        "./src/brain/*"
+      ]
+    },
+    "types": [
+      "vite/client",
+      "node"
+    ]
   },
   "include": [
     "env.d.ts",

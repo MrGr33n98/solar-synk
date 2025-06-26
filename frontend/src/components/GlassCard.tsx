@@ -1,18 +1,14 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { ReactNode } from "react";
 
 interface GlassCardProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
-export const GlassCard = ({ children, className }: GlassCardProps) => {
+export const GlassCard = ({ children, className = "" }: GlassCardProps) => {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className={`bg-white/10 backdrop-blur-lg rounded-xl shadow-lg border border-white/20 ${className}`}
-    >
+    <div className={`backdrop-blur-md bg-white/30 rounded-lg shadow-lg p-6 ${className}`}>
       {children}
-    </motion.div>
+    </div>
   );
 };

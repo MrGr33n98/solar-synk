@@ -10,16 +10,18 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@stackframe/react': path.resolve(__dirname, './src/lib/stackframe.tsx'),
+      'app': path.resolve(__dirname, './src/app'),
+      'app/auth': path.resolve(__dirname, './src/app/auth.ts'),
+      'components': path.resolve(__dirname, './src/components'),
+      'components/*': path.resolve(__dirname, './src/components/*'),
+      'brain': path.resolve(__dirname, './src/brain'),
+      'brain/*': path.resolve(__dirname, './src/brain/*'),
+      '@/hooks': path.resolve(__dirname, './src/extensions/shadcn/hooks'),
+      '@/components/hooks': path.resolve(__dirname, './src/extensions/shadcn/hooks'),
+      '@/components/ui': path.resolve(__dirname, './src/extensions/shadcn/components'),
     },
   },
-  server: {
-    port: 5173,
-    proxy: {
-      '/routes': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-    },
+  define: {
+    '__APP_ID__': JSON.stringify('dev-app-id'), // Define um valor para o desenvolvimento
   },
 });
