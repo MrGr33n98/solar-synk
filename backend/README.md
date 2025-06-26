@@ -60,7 +60,17 @@ psql "$DATABASE_URL" -f migrations/002_leads_system.sql
 Use the provided scripts to run the development server:
 
 ```bash
-./run.sh        # Linux/macOS
-run.bat         # Windows
+./run_backend.sh        # Linux/macOS
+run_backend.bat         # Windows
 ```
 
+
+## Running tests
+
+After installing dependencies, run the automated test suite with `pytest`:
+
+```bash
+pytest
+```
+
+The tests use an in-memory database and do not require a running PostgreSQL server.

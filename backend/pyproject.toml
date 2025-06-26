@@ -8,4 +8,5 @@ dependencies = [
     # Versions are kept in sync with requirements.txt
     "fastapi==0.104.1",
     "uvicorn[standard]==0.24.0",
+    "httpx==0.24.1",
 ]

@@ -24,6 +24,7 @@ export {
   mode,
 } from "../constants";
 export * from "./auth";
+export { useStackApp } from "@stackframe/react";
 
 import brain from "../brain";
 export const backend = brain;
