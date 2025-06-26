@@ -29,11 +29,10 @@ backend\install.bat
 frontend\install.bat
 ```
 
-3. Create a `.env` file inside `backend/` and set your database connection and
-other environment variables:
+3. Copy the provided `.env.example` to `.env` and adjust the values as needed:
 
 ```bash
-echo DATABASE_URL=postgresql://user:password@localhost/solarsync > backend/.env
+cp backend/.env.example backend/.env
 ```
 
 4. Run the SQL migrations in order:
