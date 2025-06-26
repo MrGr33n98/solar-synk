@@ -89,12 +89,22 @@ async def login_user(body: LoginRequest, db: asyncpg.Connection = Depends(get_db
     if not user_record or not verify_password(body.password, user_record["password_hash"]):
         raise HTTPException(status_code=401, detail="Invalid email or password")
 
-    role_name = await db.fetchval("SELECT role_name FROM user_roles WHERE id = $1", user_record["role_id"])
+    role_name = await db.fetchval(
+        "SELECT role_name FROM user_roles WHERE id = $1",
+        user_record["role_id"],
+    )
+
+    company_name = None
+    if user_record["company_id"]:
+        company_name = await db.fetchval(
+            "SELECT name FROM companies WHERE id = $1",
+            user_record["company_id"],
+        )
 
     return UserResponse(
         id=str(user_record["id"]),
         email=user_record["email"],
         role=role_name,
         full_name=user_record["full_name"],
-        company_name=user_record["company_id"],
+        company_name=company_name,
     )
