@@ -4,19 +4,12 @@ This project consists of a FastAPI backend server and a React + TypeScript front
 
 ## Stack
 
-- React + TypeScript frontend with Yarn 4 and Plug'n'Play (`nodeLinker: pnpm`).
+- React + TypeScript frontend built with Vite.
 - Python FastAPI server with `uv` as package manager.
 
 ## Quickstart
 
-1. Enable Yarn 4:
-
-```bash
-corepack enable
-yarn set version 4.0.2
-```
-
-2. Install dependencies:
+1. Install dependencies:
 
 ```bash
 make
@@ -29,10 +22,18 @@ backend\install.bat
 frontend\install.bat
 ```
 
-3. Copy the provided `.env.example` to `.env` and adjust the values as needed:
+2. Copy the provided `.env.example` to `.env` and adjust the values as needed:
 
 ```bash
 cp backend/.env.example backend/.env
+```
+
+3. Start a local PostgreSQL instance using Docker:
+
+```bash
+docker run --name solar_sync_db -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=solar_sync_db \
+  -p 5432:5432 -d postgres:15
 ```
 
 4. Run the SQL migrations in order:
@@ -67,7 +68,7 @@ Visit <http://localhost:5173> to view the application during development.
 To build the frontend for production run:
 
 ```bash
-yarn build
+npm run build
 ```
 
 The generated files will be available in `frontend/dist`. Serve this directory

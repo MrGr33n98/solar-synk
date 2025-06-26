@@ -1,3 +1,2 @@
 @echo off
-call .venv\Scripts\activate
-uvicorn main:app --reload
+call run_backend.bat
