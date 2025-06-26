@@ -29,6 +29,12 @@ make run-backend
 make run-frontend
 ```
 
+### Dependency versions
+
+The backend uses `backend/requirements.txt` as the authoritative list of
+package versions. `backend/pyproject.toml` mirrors those pins for convenience
+but the `requirements.txt` file is used when installing.
+
 ## Gotchas
 
 The backend server runs on port 8000 and the frontend development server runs on port 5173. The frontend Vite server proxies API requests to the backend on port 8000.
