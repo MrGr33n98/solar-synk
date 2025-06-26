@@ -8,27 +8,54 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-      brain: path.resolve(__dirname, './src/brain'),
-      types: path.resolve(__dirname, './src/brain/data-contracts.ts'),
-      components: path.resolve(__dirname, './src/components'),
-      pages: path.resolve(__dirname, './src/pages'),
-      app: path.resolve(__dirname, './src/app'),
-      'app/auth': path.resolve(__dirname, './src/app/auth'),
-      utils: path.resolve(__dirname, './src/utils'),
-      '@/lib/': path.resolve(__dirname, './src/lib/'),
-      '@/hooks/': path.resolve(__dirname, './src/extensions/shadcn/hooks/'),
-      '@/components/hooks/': path.resolve(
-        __dirname,
-        './src/extensions/shadcn/hooks/'
-      ),
-      '@/components/ui/': path.resolve(
-        __dirname,
-        './src/extensions/shadcn/components/'
-      ),
-      '@stackframe/react': path.resolve(__dirname, './src/lib/stackframe.tsx'),
-    },
+    alias: [
+      {
+        find: '@/components/ui',
+        replacement: path.resolve(
+          __dirname,
+          './src/extensions/shadcn/components'
+        ),
+      },
+      {
+        find: '@/components/hooks',
+        replacement: path.resolve(
+          __dirname,
+          './src/extensions/shadcn/hooks'
+        ),
+      },
+      {
+        find: '@/hooks',
+        replacement: path.resolve(
+          __dirname,
+          './src/extensions/shadcn/hooks'
+        ),
+      },
+      {
+        find: '@/lib',
+        replacement: path.resolve(__dirname, './src/lib'),
+      },
+      { find: 'brain', replacement: path.resolve(__dirname, './src/brain') },
+      {
+        find: 'types',
+        replacement: path.resolve(
+          __dirname,
+          './src/brain/data-contracts.ts'
+        ),
+      },
+      {
+        find: 'components',
+        replacement: path.resolve(__dirname, './src/components'),
+      },
+      { find: 'pages', replacement: path.resolve(__dirname, './src/pages') },
+      { find: 'app/auth', replacement: path.resolve(__dirname, './src/app/auth') },
+      { find: 'app', replacement: path.resolve(__dirname, './src/app') },
+      { find: 'utils', replacement: path.resolve(__dirname, './src/utils') },
+      {
+        find: '@stackframe/react',
+        replacement: path.resolve(__dirname, './src/lib/stackframe.tsx'),
+      },
+      { find: '@', replacement: path.resolve(__dirname, './src') },
+    ],
   },
     define: {
       __APP_ID__: JSON.stringify('dev-app-id'),
