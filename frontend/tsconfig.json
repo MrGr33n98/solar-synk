@@ -55,6 +55,9 @@
       "@/components/ui/*": [
         "./src/extensions/shadcn/components/*"
       ],
+      "@stackframe/react": [
+        "./src/lib/stack-frame.tsx"
+      ]
     }
   },
   "include": [
