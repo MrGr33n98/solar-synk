@@ -6,11 +6,16 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 .env
 
 # Node
 node_modules/
-.npm
+.npm/
+.yarn/
+.next/
+dist/
+build/
 .env.local
 .env.development.local
 .env.test.local
@@ -22,36 +27,11 @@ yarn-error.log*
 # IDE
 .vscode/
 .idea/
-
-# Build
-dist/
-build/
-*.exe
-# Criar/atualizar .gitignore
-@"
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-.env
-
-# Node
-node_modules/
-.yarn/
-.next/
-dist/
-build/
-
-# VS Code
-.vscode/
 *.code-workspace
 
 # Logs
-*.log
 logs/
+*.log
 
 # Database
 *.sqlite3
@@ -60,5 +40,3 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
-"@ | Out-File -FilePath ".gitignore" -Encoding UTF8# Criar yarn.lock vazio no frontend
-New-Item -Path "yarn.lock" -ItemType File
