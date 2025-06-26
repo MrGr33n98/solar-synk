@@ -80,13 +80,7 @@ export default defineConfig({
 			},
 		},
 	},
-	resolve: {
-		alias: {
-			resolve: {
-				alias: {
-					"@": path.resolve(__dirname, "./src"),
-				},
-			},
-		},
-	},
+        resolve: {
+                alias: { "@": path.resolve(__dirname, "./src") }
+        },
 });
