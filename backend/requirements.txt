@@ -3,6 +3,7 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 python-multipart==0.0.6
 psycopg2-binary==2.9.9  # Driver PostgreSQL pré-compilado
+asyncpg==0.29.0
 aiohttp==3.9.3  # Para requisições assíncronas
 pydantic==2.3.0  # Versão mais estável sem necessidade de Rust
 email-validator==2.0.0  # Para suporte a email
