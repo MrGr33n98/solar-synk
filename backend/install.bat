@@ -1,10 +1,10 @@
 @echo off
 echo Removing existing virtual environment...
-if exist venv rmdir /s /q venv
+if exist .venv rmdir /s /q .venv
 
 echo Creating virtual environment...
-python -m venv venv
-call venv\Scripts\activate
+python -m venv .venv
+call .venv\Scripts\activate
 
 echo Updating pip and installing basic tools...
 python -m pip install --upgrade pip wheel setuptools
