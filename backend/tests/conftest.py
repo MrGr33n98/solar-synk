@@ -1,6 +1,6 @@
 import pytest
 import uuid
-from fastapi.testclient import TestClient
+import httpx
 from backend.main import create_app
 from app.libs import database
 from databutton_app.mw import auth_mw
@@ -80,6 +80,6 @@ def app(fake_db, monkeypatch):
 
 
 @pytest.fixture
-def client(app):
-    with TestClient(app) as tc:
-        yield tc
+async def client(app):
+    async with httpx.AsyncClient(app=app, base_url="http://test") as ac:
+        yield ac
