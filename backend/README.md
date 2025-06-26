@@ -21,9 +21,14 @@ install.bat
 
 ## Environment variables
 
-Create a `.env` file in this folder with your database connection string and any
-other variables required by the application. The most important one is
-`DATABASE_URL`:
+Copy `.env.example` to `.env` in this folder and edit the values. The main
+variable required is `DATABASE_URL`:
+
+```bash
+cp .env.example .env
+```
+
+For example:
 
 ```bash
 DATABASE_URL=postgresql://user:password@localhost/solarsync
