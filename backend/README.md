@@ -52,3 +52,13 @@ Use the provided scripts to run the development server:
 run.bat         # Windows
 ```
 
+
+## Running tests
+
+After installing dependencies, run the automated test suite with `pytest`:
+
+```bash
+pytest
+```
+
+The tests use an in-memory database and do not require a running PostgreSQL server.
