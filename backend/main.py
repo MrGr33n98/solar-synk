@@ -7,6 +7,7 @@ from fastapi import FastAPI, APIRouter, Depends
 dotenv.load_dotenv()
 
 from databutton_app.mw.auth_mw import AuthConfig, get_authorized_user
+from app.libs.database import init_db_pool, close_db_pool
 
 
 def get_router_config() -> dict:
@@ -103,3 +104,13 @@ def create_app() -> FastAPI:
 
 
 app = create_app()
+
+
+@app.on_event("startup")
+async def on_startup() -> None:
+    await init_db_pool()
+
+
+@app.on_event("shutdown")
+async def on_shutdown() -> None:
+    await close_db_pool()
