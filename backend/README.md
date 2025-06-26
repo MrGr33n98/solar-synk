@@ -60,8 +60,8 @@ psql "$DATABASE_URL" -f migrations/002_leads_system.sql
 Use the provided scripts to run the development server:
 
 ```bash
-./run.sh        # Linux/macOS
-run.bat         # Windows
+./run_backend.sh        # Linux/macOS
+run_backend.bat         # Windows
 ```
 
 
