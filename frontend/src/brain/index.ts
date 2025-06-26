@@ -58,3 +58,4 @@ const constructClient = () => {
 const brain = constructClient();
 
 export default brain;
+export { Brain } from "./Brain";
