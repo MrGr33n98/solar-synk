@@ -9,17 +9,35 @@ dotenv.load_dotenv()
 from databutton_app.mw.auth_mw import AuthConfig, get_authorized_user
 
 
-def get_router_config() -> dict:
+def get_router_config() -> dict | None:
+    """Return router configuration if available.
+
+    If the configuration file cannot be read, ``None`` is returned.  The rest
+    of the application should continue to function using default values.
+    """
     try:
         # Note: This file is not available to the agent
         cfg = json.loads(open("routers.json").read())
-    except:
-        return False
+    except Exception:
+        return None
     return cfg
 
 
-def is_auth_disabled(router_config: dict, name: str) -> bool:
-    return router_config["routers"][name]["disableAuth"]
+def is_auth_disabled(router_config: dict | None, name: str) -> bool:
+    """Determine whether authentication is disabled for a router.
+
+    When ``router_config`` is ``None`` (e.g. configuration file missing) or the
+    router entry does not exist, authentication remains enabled by default.
+    """
+
+    if router_config is None:
+        # Default behaviour: authentication is enabled
+        return False
+
+    try:
+        return router_config["routers"][name].get("disableAuth", False)
+    except Exception:
+        return False
 
 
 def import_api_routers() -> APIRouter:
