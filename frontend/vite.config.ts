@@ -9,6 +9,17 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      '@/components/ui/': path.resolve(
+        __dirname,
+        './src/extensions/shadcn/components/'
+      ),
+      '@/components/hooks/': path.resolve(
+        __dirname,
+        './src/extensions/shadcn/hooks/'
+      ),
+      '@/hooks/': path.resolve(__dirname, './src/extensions/shadcn/hooks/'),
+      '@/lib/': path.resolve(__dirname, './src/lib/'),
+      '@stackframe/react': path.resolve(__dirname, './src/lib/stackframe.tsx'),
       '@': path.resolve(__dirname, './src'),
       brain: path.resolve(__dirname, './src/brain'),
       types: path.resolve(__dirname, './src/brain/data-contracts.ts'),
@@ -17,17 +28,6 @@ export default defineConfig({
       app: path.resolve(__dirname, './src/app'),
       'app/auth': path.resolve(__dirname, './src/app/auth'),
       utils: path.resolve(__dirname, './src/utils'),
-      '@/lib/': path.resolve(__dirname, './src/lib/'),
-      '@/hooks/': path.resolve(__dirname, './src/extensions/shadcn/hooks/'),
-      '@/components/hooks/': path.resolve(
-        __dirname,
-        './src/extensions/shadcn/hooks/'
-      ),
-      '@/components/ui/': path.resolve(
-        __dirname,
-        './src/extensions/shadcn/components/'
-      ),
-      '@stackframe/react': path.resolve(__dirname, './src/lib/stackframe.tsx'),
     },
   },
     define: {
