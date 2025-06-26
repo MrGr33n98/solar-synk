@@ -9,7 +9,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "strict": false,
@@ -17,7 +17,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
@@ -46,6 +46,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
       "@/hooks/*": [
         "./src/extensions/shadcn/hooks/*"
       ],
@@ -55,10 +58,13 @@
       "@/components/ui/*": [
         "./src/extensions/shadcn/components/*"
       ],
+      "@stackframe/react": [
+        "./src/lib/stackframe.tsx"
+      ]
     }
   },
   "include": [
-    "env.d.ts",
+    "vite-env.d.ts",
     "src"
   ],
   "exclude": [],
