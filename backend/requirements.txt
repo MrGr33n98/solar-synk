@@ -21,3 +21,4 @@ beautifulsoup4==4.12.2
 
 # Email
 aiosmtplib==2.0.2
+httpx==0.24.1
