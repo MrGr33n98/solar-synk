@@ -22,7 +22,28 @@ yarn set version 4.0.2
 make
 ```
 
-3. Start the backend and frontend servers in separate terminals:
+On Windows use the provided batch scripts instead of `make`:
+
+```cmd
+backend\install.bat
+frontend\install.bat
+```
+
+3. Create a `.env` file inside `backend/` and set your database connection and
+other environment variables:
+
+```bash
+echo DATABASE_URL=postgresql://user:password@localhost/solarsync > backend/.env
+```
+
+4. Run the SQL migrations in order:
+
+```bash
+psql "$DATABASE_URL" -f backend/migrations/001_admin_panel.sql
+psql "$DATABASE_URL" -f backend/migrations/002_leads_system.sql
+```
+
+5. Start the backend and frontend servers in separate terminals:
 
 ```bash
 make run-backend
@@ -33,4 +54,17 @@ make run-frontend
 
 The backend server runs on port 8000 and the frontend development server runs on port 5173. The frontend Vite server proxies API requests to the backend on port 8000.
 
-Visit <http://localhost:5173> to view the application.
+
+Visit <http://localhost:5173> to view the application during development.
+
+## Production build
+
+To build the frontend for production run:
+
+```bash
+yarn build
+```
+
+The generated files will be available in `frontend/dist`. Serve this directory
+with any static HTTP server (for example Nginx) while running the FastAPI
+backend.
