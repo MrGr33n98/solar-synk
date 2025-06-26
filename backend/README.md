@@ -34,6 +34,18 @@ For example:
 DATABASE_URL=postgresql://user:password@localhost/solarsync
 ```
 
+The leads API can optionally send email notifications when a new lead is
+created. Configure your SMTP credentials in the `.env` file using the
+variables below:
+
+```bash
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USERNAME=your_username
+SMTP_PASSWORD=your_password
+EMAIL_FROM=no-reply@example.com
+```
+
 ## Running migrations
 
 Apply the SQL files in `migrations/` to your database using `psql`:
@@ -52,3 +64,13 @@ Use the provided scripts to run the development server:
 run.bat         # Windows
 ```
 
+
+## Running tests
+
+After installing dependencies, run the automated test suite with `pytest`:
+
+```bash
+pytest
+```
+
+The tests use an in-memory database and do not require a running PostgreSQL server.
