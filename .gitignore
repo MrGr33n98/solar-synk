@@ -27,3 +27,37 @@ yarn-error.log*
 dist/
 build/
 *.exe
+# Criar/atualizar .gitignore
+@"
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.env
+
+# Node
+node_modules/
+.yarn/
+.next/
+dist/
+build/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+logs/
+
+# Database
+*.sqlite3
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+"@ | Out-File -FilePath ".gitignore" -Encoding UTF8
