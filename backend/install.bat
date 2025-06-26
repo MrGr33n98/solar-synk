@@ -32,6 +32,7 @@ pip install python-dotenv==1.0.0
 pip install requests==2.31.0
 pip install beautifulsoup4==4.12.2
 pip install PyJWT==2.8.0
+pip install httpx==0.24.1
 
 echo Installation completed!
 echo Testing FastAPI installation...
