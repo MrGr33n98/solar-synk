@@ -7,14 +7,14 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../extensions/shadcn/components/card';
+} from '@/components/ui/card';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../extensions/shadcn/components/select';
+} from '@/components/ui/select';
 import {
   Table,
   TableBody,
@@ -22,10 +22,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../extensions/shadcn/components/table';
-import { Button } from '../extensions/shadcn/components/button';
-import { Input } from '../extensions/shadcn/components/input';
-import { Badge } from '../extensions/shadcn/components/badge';
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import {
   Dialog,
   DialogContent,
@@ -34,12 +34,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../extensions/shadcn/components/dialog';
-import { Label } from '../extensions/shadcn/components/label';
-import { Textarea } from '../extensions/shadcn/components/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../extensions/shadcn/components/tabs';
+} from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertCircle, Plus, Settings, Users, CreditCard } from 'lucide-react';
-import { Alert, AlertDescription } from '../extensions/shadcn/components/alert';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface CompanyWithSubscription {
   id: number;
