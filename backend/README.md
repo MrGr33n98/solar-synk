@@ -1,7 +1,7 @@
 # Backend setup
 
 This directory contains the FastAPI application. The steps below describe how to
-set it up locally.
+set it up locally. Ensure Python 3.11 is installed (see `.python-version`).
 
 ## Installing dependencies
 

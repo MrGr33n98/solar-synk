@@ -6,6 +6,7 @@ This project consists of a FastAPI backend server and a React + TypeScript front
 
 - React + TypeScript frontend built with Vite.
 - Python FastAPI server with `uv` as package manager.
+- Requires Python 3.11 (see `backend/.python-version`).
 
 ## Quickstart
 
