@@ -20,7 +20,7 @@
       // Shadcn UI aliases
       "@/lib/*": ["./src/lib/*"],
       "@/hooks/*": ["./src/extensions/shadcn/hooks/*"],
-      "@/components/ui/*": ["./src/extensions/shadcn/components/*"],
+      "@/components/ui/*": ["./src/components/ui/*"],
       
       // General application aliases
       "@/*": ["./src/*"],
