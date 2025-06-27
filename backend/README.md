@@ -67,6 +67,15 @@ run_backend.bat         # Windows
 
 ## Running tests
 
+Before executing the tests, make sure the required Python packages are
+installed:
+
+```bash
+pip install -r requirements.txt
+```
+
+The suite relies on the `httpx` package for the async test client.
+
 After installing dependencies, run the automated test suite with `pytest`:
 
 ```bash
