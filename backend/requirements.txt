@@ -18,7 +18,7 @@ PyJWT==2.8.0
 aiohttp==3.9.3
 requests==2.31.0
 beautifulsoup4==4.12.2
+httpx==0.24.1
 
 # Email
 aiosmtplib==2.0.2
-httpx==0.24.1
