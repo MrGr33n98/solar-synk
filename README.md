@@ -15,9 +15,6 @@ This project consists of a FastAPI backend server and a React + TypeScript front
 make
 ```
 
-<<<<<<< HEAD
-2. Copy `backend/.env.example` to `backend/.env`:
-=======
 On Windows use the provided batch scripts instead of `make`:
 
 ```cmd
@@ -25,16 +22,12 @@ backend\install.bat
 frontend\install.bat
 ```
 
-2. Copy the provided `.env.example` to `.env` and adjust the values as needed:
->>>>>>> main
+2. Copy the provided `.env.example` to `backend/.env` and adjust the values as needed:
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-<<<<<<< HEAD
-3. Start the backend and frontend servers in separate terminals:
-=======
 3. Start a local PostgreSQL instance using Docker:
 
 ```bash
@@ -51,7 +44,6 @@ psql "$DATABASE_URL" -f backend/migrations/002_leads_system.sql
 ```
 
 5. Start the backend and frontend servers in separate terminals:
->>>>>>> main
 
 ```bash
 make run-backend
